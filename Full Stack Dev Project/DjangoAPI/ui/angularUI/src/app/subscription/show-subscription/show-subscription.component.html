@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center" style="margin-top: 10px; margin-bottom: 10px;">
+    Stock Ticker: <input #newSubscriptionStockTicker style="margin-left: 10px; margin-right: 10px;" (keyup.enter)="addSubscription(newSubscriptionStockTicker.value,newSubscriptionContactNumber.value);newSubscriptionStockTicker.value='';newSubscriptionContactNumber.value=''">
+    Contact Number: <input #newSubscriptionContactNumber style="margin-left: 10px; margin-right: 10px;"(keyup.enter)="addSubscription(newSubscriptionStockTicker.value,newSubscriptionContactNumber.value);newSubscriptionStockTicker.value='';newSubscriptionContactNumber.value=''">
+    <button (click)="addSubscription(newSubscriptionStockTicker.value,newSubscriptionContactNumber.value);newSubscriptionStockTicker.value='';newSubscriptionContactNumber.value=''">Add</button>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+           
+            <th style="width:30%">Stock Ticker</th>
+            <th style="width:30%">Contact Number</th>
+            <th style="width:30%">Options</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of SubscriptionList">
+            <td>{{dataItem.SubscriptionStockTicker}}</td>
+            <td>{{dataItem.SubscriptionContactNumber}}</td>
+            <td>
+                <button type="button" class="btn btn-light mr-1" (click)="SendUpdate(dataItem)">Send Update</button>
+                <button type="button" class="btn btn-light mr-1" (click)="deleteSubscription(dataItem)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
